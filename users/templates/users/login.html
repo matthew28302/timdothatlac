@@ -1,0 +1,39 @@
+{% extends 'users/layout.html' %}
+{% block title %}
+    Timdothatlac.vn
+{% endblock %}
+
+{% block body %}
+
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+            <form action="{% url 'login' %}" method='post'>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input class="form-control", type="text", name="username", placeholder="User Name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password", name='password',placeholder="Pass Word", class="form-control" ,id="exampleInputPassword1">
+                </div>
+                
+                <input type="submit", value='Login'>
+                <p><a href="{% url 'resetpwd'%}">Forgot your password</a></p>
+            </form>
+            
+            <div id='another_login'>
+               <button class="loginBtn loginBtn--facebook">
+                    Login with Facebook
+                </button>
+
+                <button class="loginBtn loginBtn--google">
+                Login with Google
+                </button>
+            </div>
+
+            <p>not have account<a href="{% url 'register'%}">Register</a></p>
+
+
+{% endblock %}
