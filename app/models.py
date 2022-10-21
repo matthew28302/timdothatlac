@@ -5,6 +5,7 @@ class Account(models.Model):
     password = models.CharField("Mật khẩu", max_length=50)
     fullname = models.CharField("Họ tên", max_length=100)
     email = models.EmailField(("Email"), max_length=254)
+    
 class Item(models.Model):
     _postInfo = (
         ('ND','Nhặt được'),
@@ -29,6 +30,7 @@ class Item(models.Model):
     address = models.CharField("Địa chỉ",blank = True, max_length = 200)
     phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
     email = models.EmailField(("Email"),blank = True, max_length=254)
+    
 class Message(models.Model):
     _status = (
         ('W','Waiting'),
@@ -39,6 +41,7 @@ class Message(models.Model):
     content = models.CharField(("Nội dung"), max_length=50)
     time = models.DateTimeField(("Thời gian"))
     status = models.CharField("Trạng thái tin nhắn",max_length=50,choices=_status,blank=True)
+    
 class menuItem(models.Model):
     nameItem = models.CharField("Tên kiểu đồ",max_length=50)
     amountLost = models.IntegerField(("Số lượng mất"))

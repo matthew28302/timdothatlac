@@ -43,7 +43,7 @@ def resetpwd(request):
     return render(request,'users/reset_password.html')
 
 def register(request):
-    return render(request,'search/register.html')
+    return render(request,'users/register.html')
 
 def update(request):
     return render(request,"users/update_information.html")

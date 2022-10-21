@@ -1,0 +1,60 @@
+{% extends 'app/frame.html' %}
+
+{% block content %}
+     <div id='post'>
+                <h5>Title</h5>
+                <!-- <input type="text" name="TieuDe" id="TieuDe" placeholder='VD: Rơi ví của anh A tại quận Cầu Giấy Hà Nội'> -->
+                <input class="form-control" type="text" placeholder="VD: drop A 's wallet in TanBinh district" aria-label="default input example">
+                <h3>Chọn loại tin</h3>
+                <form action="">
+                    <input type="radio" checked='checked' value='News_to_find' name='news'> News to find <br>
+                    <input type="radio" value='NewsPickedUp' name='news'> News Picked Up <br>
+                    <label for="category"> <b>Select category *</b></label>
+                    <br>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="wallet"> wallet</option>
+                        <option value="CCCD">CCCD</option>
+                        <option value="phone">Phone Number</option>
+                        <option value="laptop"> laptop</option>
+                    </select>
+                    <hr>
+                    <div id='select_region'>
+
+                        <label for="Regions"> <b> Regions</b></label> <br>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="HCM"> Hồ Chí Minh</option>
+                            <option value="HN">Hà nội</option>
+                            <option value="PB">Bình Phước</option>
+                            <option value="PD">Bình Dương</option>
+                        </select>
+                        <hr>
+
+                        <label for="distric, war"> <b> District,towns, communes</b></label> <br>
+                       <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="tanBinh"> Tân Bình</option>
+                            <option value="TanPhu">Tân Phú</option>
+                            <option value="BinhThanh">Bình Thạnh</option>
+                            <option value="PhuNhuan"> Phú Nhuận</option>
+                        </select>
+                        
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label"><b> Content</b></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label"><b> Contact Information </b></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </form>
+                
+                <button type="button" class="btn btn-success">Upload</button>
+               
+
+            </div>
+{% endblock %}
