@@ -1,0 +1,27 @@
+{% extends 'app/frame.html'%}
+
+ {% comment %} <!-- title = models.CharField("Tiêu đề", max_length = 200)
+    postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True)
+    typeItem = models.CharField("Phân loại đồ", max_length = 50)
+    adrLost = models.CharField("Địa điểm mất",max_length=200)
+    image = models.ImageField( upload_to='images/', height_field=None, width_field=None, max_length=None) 
+    content = models.CharField("Nội dung", max_length=500)
+    fullname = models.CharField("Họ tên",blank = True, max_length = 100)
+    address = models.CharField("Địa chỉ",blank = True, max_length = 200)
+    phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
+    email = models.EmailField(("Email"),blank = True, max_length=254)
+     --> {% endcomment %}
+{% block content %}
+    <h1>Item: {{ item.id }}</h1>
+    <ul>
+       <li>Title {{ item.title }}</li>
+       <li>Type of items: {{item.typeItem}}</li>
+       <li>Kind of news : {{ item.postInfo }}</li>
+       <li>Address: {{ item.address }}</li>
+       <li>Content: {{ item.postInfo }}</li>
+       <li>name  post: {{ item.fullname }}</li>
+       <li>phone number: {{ item.phoneNum }}</li>
+       <li>Email: {{ item.postInfo }}</li>
+    </ul>
+    <a href="{% url 'indexApp' %}"> All items</a>
+{% endblock%}

@@ -1,6 +1,21 @@
 {% extends 'app/frame.html'%}
-
-
+{% comment %} 
+ <!-- title = models.CharField("Tiêu đề", max_length = 200)
+    postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True)
+    typeItem = models.CharField("Phân loại đồ", max_length = 50)
+    adrLost = models.CharField("Địa điểm mất",max_length=200)
+    image = models.ImageField( upload_to='images/', height_field=None, width_field=None, max_length=None) 
+    content = models.CharField("Nội dung", max_length=500)
+    fullname = models.CharField("Họ tên",blank = True, max_length = 100)
+    address = models.CharField("Địa chỉ",blank = True, max_length = 200)
+    phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
+    email = models.EmailField(("Email"),blank = True, max_length=254)
+     --> {% endcomment %}
 {% block content %}
-Hello world
-{% endblock%}
+    <h1>Menu Items: </h1>
+    <ul>
+      {% for item in items %}
+        <li> <a href="{% url 'item' item.id %}"> Item {{ item.id }}</a> Titlle: <b>{{ item.title }}</b> Loaction: {{item.address}}  </li>
+      {% endfor %}
+  
+{% endblock %}
