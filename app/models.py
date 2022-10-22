@@ -1,10 +1,13 @@
 from django.db import models
+from django.db.models import Count
 # Create your models here.
+
+
 class Account(models.Model):
     username = models.CharField(("Tên đăng nhập"), max_length=50)
     password = models.CharField("Mật khẩu", max_length=50)
-    fullname = models.CharField("Họ tên", max_length=100)
-    email = models.EmailField(("Email"), max_length=254)
+    fullname = models.CharField("Họ tên", max_length=100,blank=True)
+    email = models.EmailField(("Email"), max_length=254,blank=True)
 class Item(models.Model):
     _postInfo = (
         ('ND','Nhặt được'),
@@ -21,7 +24,7 @@ class Item(models.Model):
     )
     title = models.CharField("Tiêu đề", max_length = 200)
     postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True)
-    typeItem = models.CharField("Phân loại đồ", max_length = 50)
+    typeItem = models.CharField("Phân loại đồ", max_length = 50, choices=_typeItem,blank=True)
     adrLost = models.CharField("Địa điểm mất",max_length=200)
     image = models.ImageField( upload_to='images/', height_field=None, width_field=None, max_length=None) 
     content = models.CharField("Nội dung", max_length=500)
@@ -35,7 +38,8 @@ class Message(models.Model):
         ('S','Success'),
         ('F','Failed'),
     )
-    fullname = models.CharField(("Họ tên"), max_length=100)
+    sender = models.CharField(("Người gửi"), max_length=100)
+    receiver = models.CharField(("Người nhận"), max_length=50)
     content = models.CharField(("Nội dung"), max_length=50)
     time = models.DateTimeField(("Thời gian"))
     status = models.CharField("Trạng thái tin nhắn",max_length=50,choices=_status,blank=True)
@@ -43,7 +47,7 @@ class menuItem(models.Model):
     nameItem = models.CharField("Tên kiểu đồ",max_length=50)
     amountLost = models.IntegerField(("Số lượng mất"))
     amountPick = models.IntegerField("Số lượng nhặt được") 
-    
+ 
 
 
 

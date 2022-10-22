@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from app.models import Account,Item,Message,menuItem
+from .models import *
 # Register your models here.
 
 admin.site.register(Account)
