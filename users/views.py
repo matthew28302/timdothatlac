@@ -2,9 +2,27 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate , login, logout
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm 
 
 
-# Create your views here.
+from app.models import Account
+
+
+
+
+
+
+
+def registerPage(request):
+    pass
+    # form = UserCreationForm()
+    # if request.method == "POST":
+    #     form = UserCreationForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+            
+    # context = {'form': form}
+    # return render(request, 'users/register1.html', context)
 def index(request):
     
     if not request.user.is_authenticated:
@@ -43,10 +61,25 @@ def resetpwd(request):
     return render(request,'users/reset_password.html')
 
 def register(request):
-    return render(request,'users/register.html')
+    if request.method == "POST":
+        userName = request.POST("username")
+        password = request.POST("password")
+        
+        user =  Account(username=username, password=password)
+        user.save()
+        return render(request, "users/login.html")
+    else: 
+        return render(request, "users/register.html")
+            
 
 def update(request):
     return render(request,"users/update_information.html")
+
+# save information for register
+
+def addrecord(request):
+    pass
+    
 
     
     

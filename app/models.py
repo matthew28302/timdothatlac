@@ -6,14 +6,9 @@ from django.db.models import Count
 class Account(models.Model):
     username = models.CharField(("Tên đăng nhập"), max_length=50)
     password = models.CharField("Mật khẩu", max_length=50)
-<<<<<<< HEAD
-    fullname = models.CharField("Họ tên", max_length=100)
-    email = models.EmailField(("Email"), max_length=254)
-    
-=======
     fullname = models.CharField("Họ tên", max_length=100,blank=True)
     email = models.EmailField(("Email"), max_length=254,blank=True)
->>>>>>> 5e7fa2a94d38c4730e71be9f8a1888283d055ab1
+
 class Item(models.Model):
     _postInfo = (
         ('ND','Nhặt được'),

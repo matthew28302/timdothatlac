@@ -1,10 +1,11 @@
 {% extends 'users/layout.html' %}
+{% load static %}
 {% block title %}
     Timdothatlac.vn
 {% endblock %}
 
 {% block body %}
-        <div class="log">
+        <div id="login_background",  style =" background-image: url="{% static 'users/backgroung.jpg' %};" ">
             {% if message %}
                 <div>{{ message }}</div>
             {% endif %}
@@ -33,7 +34,7 @@
                 </button>
             </div>
 
-            <p>not have account<a href="{% url 'register'%}">Register</a></p>
+            <p>not have account<a href="{% url 'register' %}">Register</a></p>
         </div>
 
 

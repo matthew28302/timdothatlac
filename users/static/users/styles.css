@@ -1,9 +1,6 @@
 body { padding: 2em; }
 
-.log {
-  background-color: rgb(107, 189, 147);
-  border: 1px solid #04AA6D;
-}
+
 /* Shared */
 .loginBtn {
   box-sizing: border-box;
@@ -106,7 +103,7 @@ input[type=text], input[type=password] {
 }
 
 input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
+    background-color:lightgoldenrodyellow;
     outline: none;
 }
 
