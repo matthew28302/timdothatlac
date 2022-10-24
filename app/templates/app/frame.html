@@ -2,14 +2,13 @@
 {% load static %}
 
 
-
 {% block title%}
     Home
 {% endblock %}
 
 {% block body %}
 <div class="main-index">
-	<div class="container navbar">
+	{% comment %} <div class="container navbar">
 		<div class="wrapper">
 
 			<a href="index.html" class="col-sm-6 col-lg-3"><img src="{% static 'app/homelogo.png' %}" alt="Home Page" class="homelogo"></a>
@@ -45,7 +44,8 @@
 		</div>
 
 
-	</div>
+	</div> {% endcomment %}
+	{% include 'app/navbar.html' %}
 	<div class="container">
 		<div class="wrapper">
 			<div class="row">

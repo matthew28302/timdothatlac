@@ -10,5 +10,7 @@ urlpatterns = [
     path('donate/', views.donate, name="donate"),
     path('terms/', views.terms, name="terms"),
     path('introduce/', views.introduce, name="introduce"),
+    path('report/',views.report,name="reportError"),
+    path("search/",views.search, name="searchAdvance"),
 ]
 

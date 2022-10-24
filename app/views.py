@@ -38,3 +38,7 @@ def donate(request):
     return render(request,"app/donate.html")
 def warning(request):
     return render(request,"app/warning.html")
+def report(request):
+    return render(request,"app/reportError.html")
+def search(request):
+    return render(request,"app/searchAdvance.html")
