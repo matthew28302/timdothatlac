@@ -15,15 +15,14 @@
 <div class='content'>
     <h2><b>Update information</b></h2>
 
-    <form action="action_page.php">
+    <form action="updaterecord/{{ user.id }}" , method="POST">
+        {% csrf_token %}
         <div class='container'>
             <p>Please fill in this form to update account</p>
             <hr>
-            <label for="name"><b>first anme</b></label>
-            <input type="text" placeholder='first name' name='first' id='first' required>
-            <label for="text"><b>last name</b></label>
-            <input type="text" placeholder='last name' name='last' id='last' required>
-            <hr>
+            <label for="name"><b>Full name</b></label>
+            <input type="text",name='fullname', value="{{ user.fullname }}">
+         
             
         </div>
 

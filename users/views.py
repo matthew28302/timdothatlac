@@ -72,14 +72,7 @@ def register(request):
         return render(request, "users/register.html")
             
 
-def update(request):
-    return render(request,"users/update_information.html")
 
-# save information for register
-
-def addrecord(request):
-    pass
-    
 
     
     
