@@ -28,3 +28,13 @@ def registerPage(request):
             form.save()
     context = {'form': form}
     return render(request, 'app/register1.html', context)
+def introduce(request):
+    return render(request,"app/introduce.html")
+def terms(request):
+    return render(request,"app/terms.html")
+def policy(request):
+    return render(request,"app/policy.html")
+def donate(request):
+    return render(request,"app/donate.html")
+def warning(request):
+    return render(request,"app/warning.html")
