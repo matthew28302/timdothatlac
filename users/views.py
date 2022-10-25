@@ -72,7 +72,8 @@ def register(request):
         return render(request, "users/register.html")
             
 
-
+def postnew(request):
+    return render(request, "users/postNew.html")
 
     
     

@@ -2,14 +2,13 @@
 {% load static %}
 
 
-
 {% block title%}
     Home
 {% endblock %}
 
 {% block body %}
 <div class="main-index">
-	<div class="container navbar">
+	{% comment %} <div class="container navbar">
 		<div class="wrapper">
 
 			<a href="index.html" class="col-sm-6 col-lg-3"><img src="{% static 'app/homelogo.png' %}" alt="Home Page" class="homelogo"></a>
@@ -45,12 +44,13 @@
 		</div>
 
 
-	</div>
+	</div> {% endcomment %}
+	{% include 'app/navbar.html' %}
 	<div class="container">
 		<div class="wrapper">
 			<div class="row">
 				<div class="col-lg-3 taskbar">
-					<a href="{% url 'post'%}" class="item-icon">
+					<a href="{% url 'postnew'%}" class="item-icon">
 						<i class="fas fa-upload"></i>
 						Đăng tin
 					</a>
@@ -70,7 +70,7 @@
 						<i class="far fa-user"></i>
 						Tìm người
 					</a>
-					<a href="#" class="item-icon">
+					<a href="{% url 'searchAdvance'%}" class="item-icon">
 						<i class="fas fa-search"></i>
 						Tìm kiếm nâng cao
 					</a>
@@ -79,31 +79,31 @@
 						Danh sách SDT lừa đảo
 					</a>
 					<br>
-					<a href="#" class="item-icon">
+					<a href="{% url 'indexApp' %}" class="item-icon">
 						<i class="fas fa-newspaper"></i>
 						Tin tức
 					</a>
-					<a href="#" class="item-icon">
+					<a href="{% url 'introduce' %}" class="item-icon">
 						<i class="fas fa-info"></i>
 						Giới thiệu
 					</a>
-					<a href="#" class="item-icon">
+					<a href="{% url 'donate' %}" class="item-icon">
 						<i class="fas fa-dollar-sign"></i>
 						Ủng hộ dự án
 					</a>
-					<a href="#" class="item-icon">
+					<a href="{% url 'policy' %}" class="item-icon">
 						<i class="fas fa-shield-alt"></i>
 						Chính sách bảo mật
 					</a>
-					<a href="#" class="item-icon">
+					<a href="{% url 'terms' %}" class="item-icon">
 						<i class="fas fa-book"></i>
 						Điều khoản sử dụng
 					</a>
-					<a href="#" class="item-icon">
+					<a href="{% url 'warning' %}" class="item-icon">
 						<i class="fas fa-shield-alt"></i>
 						Cảnh báo lừa đảo
 					</a>
-					<a href="#" class="item-icon">
+					<a href="{% url 'reportError' %}" class="item-icon">
 						<i class="fas fa-bug"></i>
 						Báo lỗi
 					</a>

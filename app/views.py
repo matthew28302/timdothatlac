@@ -84,3 +84,17 @@ def addItem(request):
     
         
     
+def introduce(request):
+    return render(request,"app/introduce.html")
+def terms(request):
+    return render(request,"app/terms.html")
+def policy(request):
+    return render(request,"app/policy.html")
+def donate(request):
+    return render(request,"app/donate.html")
+def warning(request):
+    return render(request,"app/warning.html")
+def report(request):
+    return render(request,"app/reportError.html")
+def search(request):
+    return render(request,"app/searchAdvance.html")
