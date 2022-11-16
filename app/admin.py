@@ -7,5 +7,6 @@ admin.site.register(Account)
 admin.site.register(Item)
 admin.site.register(Message)
 admin.site.register(menuItem)
+admin.site.register(Profile)
 
 #...

@@ -1,9 +1,13 @@
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 from . import views
+app_name = "apps"
+#name space
 urlpatterns = [
     path('',views.index,name='indexApp'),
-    path('post', views.addItem, name='post'),
-    path('addItem', views.addItem, name='addItem'),
+    path('add/', views.add_post, name='postnew'),
+    path('save/', views. save_new_post, name='save_new_post'),
     path("<int:item_id>", views.item, name="item"),
     path("register", views.registerPage, name="register"),
     path('update/<int:id>', views.update, name='update'),
@@ -17,4 +21,6 @@ urlpatterns = [
     path("search/",views.search, name="searchAdvance"),
 
 ]
-
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

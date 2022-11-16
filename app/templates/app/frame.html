@@ -1,124 +1,92 @@
-{% extends 'app/layout.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+
+        <script src="https://kit.fontawesome.com/ea6ab068fd.js" crossorigin="anonymous"></script>
+        <title> {% block title %} {% endblock %} </title>
+        <link href="{% static 'app/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    </head>
+
+	<body>
+		 <div class="main-index">
+			{% include 'app/navbar.html' %}
+			<div class="container">
+				<div class="wrapper">
+					<div class="row">
+						<div class="col-lg-3 taskbar">
+							<a href="{% url 'apps:postnew'%}" class="item-icon">
+								<i class="fas fa-upload"></i>
+								Đăng tin
+							</a>
+							<a href="#" class="item-icon">
+								<i class="far fa-frown-open"></i>
+								Tin cần tìm
+							</a>
+							<a href="#" class="item-icon">
+								<i class="fas fa-box"></i>
+								Tin nhặt được
+							</a>
+							<a href="#" class="item-icon">
+								<i class="fas fa-paw"></i>
+								Thú cưng
+							</a>
+							<a href="#" class="item-icon">
+								<i class="far fa-user"></i>
+								Tìm người
+							</a>
+							<a href="{% url 'apps:searchAdvance'%}" class="item-icon">
+								<i class="fas fa-search"></i>
+								Tìm kiếm nâng cao
+							</a>
+							<a href="#" class="item-icon">
+								<i class="fas fa-phone-slash"></i>
+								Danh sách SDT lừa đảo
+							</a>
+							<br>
+							<a href="{% url 'apps:indexApp' %}" class="item-icon">
+								<i class="fas fa-newspaper"></i>
+								Tin tức
+							</a>
+							<a href="{% url 'apps:introduce' %}" class="item-icon">
+								<i class="fas fa-info"></i>
+								Giới thiệu
+							</a>
+							<a href="{% url 'apps:donate' %}" class="item-icon">
+								<i class="fas fa-dollar-sign"></i>
+								Ủng hộ dự án
+							</a>
+							<a href="{% url 'apps:policy' %}" class="item-icon">
+								<i class="fas fa-shield-alt"></i>
+								Chính sách bảo mật
+							</a>
+							<a href="{% url 'apps:terms' %}" class="item-icon">
+								<i class="fas fa-book"></i>
+								Điều khoản sử dụng
+							</a>
+							<a href="{% url 'apps:warning' %}" class="item-icon">
+								<i class="fas fa-shield-alt"></i>
+								Cảnh báo lừa đảo
+							</a>
+							<a href="{% url 'apps:reportError' %}" class="item-icon">
+								<i class="fas fa-bug"></i>
+								Báo lỗi
+							</a>
+						</div>
+						<div class="col-lg-9">
+							<p>
+
+							   {% block content %}
+							   {% endblock %}
 
 
-{% block title%}
-    Home
-{% endblock %}
-
-{% block body %}
-<div class="main-index">
-	{% comment %} <div class="container navbar">
-		<div class="wrapper">
-
-			<a href="index.html" class="col-sm-6 col-lg-3"><img src="{% static 'app/homelogo.png' %}" alt="Home Page" class="homelogo"></a>
-			<div class="col-sm-6 col-lg-6 search-pos">
-				<form action="#" method="GET" >
-					<input type="text" placeholder="Nhập tên trong giấy tờ, tên đồ vật, tên vật nuôi ..."
-						name="keywords" autocomplete="off" class="search-hideborder search-text">
-					<button type="submit" aria-label="Tìm kiếm" class="search-hideborder button-pos">
-						<i class="fas fa-search"></i>
-					</button>
-				</form>
-			</div>
-			<div class="col-sm-6 order-sm-2 col-lg-3">
-				<ul class="nav	">
-					<li>
-						<a href="#">
-							<i class="fas fa-plus-circle"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-bell"></i>
-						</a>
-					</li>
-					<li>
-						<a href="{% url 'login' %}">
-							<i class="fas fa-user-circle"></i>
-						</a>
-					</li>
-				</ul>
-
-			</div>
-		</div>
-
-
-	</div> {% endcomment %}
-	{% include 'app/navbar.html' %}
-	<div class="container">
-		<div class="wrapper">
-			<div class="row">
-				<div class="col-lg-3 taskbar">
-					<a href="{% url 'postnew'%}" class="item-icon">
-						<i class="fas fa-upload"></i>
-						Đăng tin
-					</a>
-					<a href="#" class="item-icon">
-						<i class="far fa-frown-open"></i>
-						Tin cần tìm
-					</a>
-					<a href="#" class="item-icon">
-						<i class="fas fa-box"></i>
-						Tin nhặt được
-					</a>
-					<a href="#" class="item-icon">
-						<i class="fas fa-paw"></i>
-						Thú cưng
-					</a>
-					<a href="#" class="item-icon">
-						<i class="far fa-user"></i>
-						Tìm người
-					</a>
-					<a href="{% url 'searchAdvance'%}" class="item-icon">
-						<i class="fas fa-search"></i>
-						Tìm kiếm nâng cao
-					</a>
-					<a href="#" class="item-icon">
-						<i class="fas fa-phone-slash"></i>
-						Danh sách SDT lừa đảo
-					</a>
-					<br>
-					<a href="{% url 'indexApp' %}" class="item-icon">
-						<i class="fas fa-newspaper"></i>
-						Tin tức
-					</a>
-					<a href="{% url 'introduce' %}" class="item-icon">
-						<i class="fas fa-info"></i>
-						Giới thiệu
-					</a>
-					<a href="{% url 'donate' %}" class="item-icon">
-						<i class="fas fa-dollar-sign"></i>
-						Ủng hộ dự án
-					</a>
-					<a href="{% url 'policy' %}" class="item-icon">
-						<i class="fas fa-shield-alt"></i>
-						Chính sách bảo mật
-					</a>
-					<a href="{% url 'terms' %}" class="item-icon">
-						<i class="fas fa-book"></i>
-						Điều khoản sử dụng
-					</a>
-					<a href="{% url 'warning' %}" class="item-icon">
-						<i class="fas fa-shield-alt"></i>
-						Cảnh báo lừa đảo
-					</a>
-					<a href="{% url 'reportError' %}" class="item-icon">
-						<i class="fas fa-bug"></i>
-						Báo lỗi
-					</a>
-				</div>
-				<div class="col-lg-9">
-					<p>
-                      
-                       {% block content %} 
-                       {% endblock %}
-
-
-					</p>
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-{% endblock %}
+    </body>
+</html>

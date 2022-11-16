@@ -1,6 +1,11 @@
+
+from pyexpat import model
+
+
 from django.db import models
 from django.db.models import Count
 # Create your models here.
+from django.utils import timezone
 
 
 class Account(models.Model):
@@ -24,15 +29,16 @@ class Item(models.Model):
         ('OTHER','Đồ vật khác'),
     )
     title = models.CharField("Tiêu đề", max_length = 200)
-    postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True)
-    typeItem = models.CharField("Phân loại đồ", max_length = 50, choices=_typeItem,blank=True)
+    postInfo = models.CharField("Kiểu tin tức",max_length=10, choices=_postInfo, blank=True)
+    typeItem = models.CharField("Phân loại đồ", max_length=50, choices=_typeItem,blank=True)
     adrLost = models.CharField("Địa điểm mất",max_length=200)
-    image = models.ImageField( upload_to='images/', height_field=None, width_field=None, max_length=None) 
+    image = models.ImageField( upload_to='static/app/images/', height_field=None, width_field=None, max_length=None) 
     content = models.CharField("Nội dung", max_length=500)
     fullname = models.CharField("Họ tên",blank = True, max_length = 100)
     address = models.CharField("Địa chỉ",blank = True, max_length = 200)
     phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
     email = models.EmailField(("Email"),blank = True, max_length=254)
+
     
 class Message(models.Model):
     _status = (
@@ -49,7 +55,15 @@ class Message(models.Model):
 class menuItem(models.Model):
     nameItem = models.CharField("Tên kiểu đồ",max_length=50)
     amountLost = models.IntegerField(("Số lượng mất"))
-    amountPick = models.IntegerField("Số lượng nhặt được") 
+    amountPick = models.IntegerField("Số lượng nhặt được")
+    
+class Profile(models.Model):
+    user = models.OneToOneField(Account, null=True, on_delete = models.CASCADE)
+    
+    bio = models.TextField()
+    
+    def __str__(self):
+        return (self.user) 
  
 
 

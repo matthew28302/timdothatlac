@@ -1,23 +1,16 @@
 {% extends 'users/layout.html' %}
+{% block wrapper %}
 
-{% block body %}
-    <div class='sidebar'>
-        <a class='active' href="#">General information</a>
-        <a href="#">My article</a>
-        {% comment %} <a href="{% url '' %}">Update information</a> {% endcomment %}
-        <a href="#">Sign up for</a>
-        <a href="{% url 'resetpwd' %}">Chang Password</a>
-    </div>
-    <div class='content'>
+    <div class='container'>
         <h1>User {{ request.user.first_name }}</h1>
         <ul>
-            <li>Username: {{ request.user.first_name }}</li>
+            <li >Username: {{ request.user.first_name }}</li>
             <li>Email: {{ request.user.email}}</li>
             {% comment %} <li>Address: {{request.user.address}} </li> {% endcomment %}
 
         </ul>
 
-        <a href="{% url 'logout' %}"> Log Out</a>
+        <a href="{% url 'users:logout' %}"> Log Out</a>
     </div>
 
 {% endblock %}

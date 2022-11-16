@@ -1,4 +1,5 @@
 {% extends 'app/frame.html'%}
+{% load static %}
 
  {% comment %} <!-- title = models.CharField("Tiêu đề", max_length = 200)
     postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True)
@@ -22,6 +23,34 @@
        <li>name  post: {{ item.fullname }}</li>
        <li>phone number: {{ item.phoneNum }}</li>
        <li>Email: {{ item.postInfo }}</li>
-    </ul>
+      
+      
+ 
+        <img src="{% static '{{item.image}}' %}" alt="imagehere">
+  
+    </ul> 
+    {% comment %} <style>
+      table, th, td {
+      border:1px solid black;
+      color: green;
+   }
+    </style>
+    <table>
+  <tr>
+    <th>Tiêu đề</th>
+    <th>loại đồ </th>
+    <th>Person 3</th>
+  </tr>
+  <tr>
+    <td>Emil</td>
+    <td>Tobias</td>
+    <td>Linus</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>14</td>
+    <td>10</td>
+  </tr>
+</table> {% endcomment %}
     <a href="{% url 'indexApp' %}"> All items</a>
 {% endblock%}

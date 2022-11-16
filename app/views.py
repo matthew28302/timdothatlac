@@ -1,10 +1,37 @@
 from urllib.request import HTTPRedirectHandler
-from django.shortcuts import render
 from .models import Account, Item, menuItem
-from django.contrib.auth.forms import UserCreationForm 
-from .forms import CreateUserForm
-from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
+
+
+from .forms import CreateNewPost
+
+def add_post(request):
+    form = CreateNewPost()
+    return render(request, "app/post.html", {
+        "form": form,
+    })
+def save_new_post(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = CreateNewPost(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponse("Luu oke")
+        else:
+            return HttpResponse("Luu khong thanh cong")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = CreateNewPost()
+
+    return render(request, 'app/post.html', {'form': form})
 
 # Create your views here.
 def index(request):
@@ -13,8 +40,7 @@ def index(request):
         "items": Item.objects.all()
     })
 
-def post(request):
-    return render(request, 'app/postNews.html' )
+
 
 # detail  information of the item
 def item(request, item_id):
@@ -49,12 +75,6 @@ def updaterecord(request, user_id):
     return HttpResponseRedirect(reverse('indexApp'))
 
 
-def get_type_item(request):
-    
-    type_post =["Newtopost", "new to find"]
-    return render (request, 'postNews.html', {
-        'typePost': ["Newtopost", "new to find"]
-            })
 
 
 def addItem(request):

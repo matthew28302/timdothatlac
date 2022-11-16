@@ -27,7 +27,7 @@ def index(request):
     
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
-    return render(request,"users/user.html")
+    return render(request, "users/user.html")
 
 def login_view(request):
     if request.method == "POST":
@@ -39,7 +39,7 @@ def login_view(request):
         if user:
            
             login(request, user)
-            return HttpResponseRedirect(reverse("index")) 
+            return HttpResponseRedirect(reverse("users:index"))
            
         
         else:
@@ -64,16 +64,15 @@ def register(request):
     if request.method == "POST":
         userName = request.POST("username")
         password = request.POST("password")
-        
-        user =  Account(username=username, password=password)
+
+        user =  Account(username=userName, password=password)
         user.save()
         return render(request, "users/login.html")
-    else: 
+    else:
         return render(request, "users/register.html")
             
 
-def postnew(request):
-    return render(request, "users/postNew.html")
+
 
     
     

@@ -1,0 +1,27 @@
+{% extends 'app/layout.html' %}
+
+{% block title %}
+Form post new
+{% endblock %}
+
+{% block wrapper %}
+<div class="container">
+    <form action="{% url 'apps:save_new_post'%}" method="post">
+
+        {% csrf_token %}
+        <label>Title</label>
+        <p>{{ form.title }}</p>
+        <label>Thông tin</label>
+        <p>{{ form.postInfo }}</p>
+        <label>Loại đồ </label>
+        <p>{{ form.typeItem }}</p>
+         <label>Địa chỉ thất lạc </label>
+        <p>{{ form.adrLost }}</p>
+         <label>Nội dung </label>
+        <p>{{ form.content }}</p>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+
+</div>
+
+{% endblock %}

@@ -15,7 +15,7 @@
     <h1>Menu Items: </h1>
     <ul>
       {% for item in items %}
-        <li> <a href="{% url 'item' item.id %}"> Item {{ item.id }}</a> Titlle: <b>{{ item.title }}</b> Loaction: {{item.address}}  </li>
+        <li> <a href="{% url 'apps:item' item.id %}"> Item {{ item.id }}</a> Titlle: <b>{{ item.title }}</b> Loaction: {{item.address}}  </li>
       {% endfor %}
   
 {% endblock %}

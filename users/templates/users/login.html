@@ -4,12 +4,12 @@
     Timdothatlac.vn
 {% endblock %}
 
-{% block body %}
-        <div id="login_background",  style =" background-image: url="{% static 'users/backgroung.jpg' %};" ">
+{% block wrapper %}
+        <div class="container pt-5">
             {% if message %}
                 <div>{{ message }}</div>
             {% endif %}
-            <form action="{% url 'login' %}" method='post'>
+            <form action="{% url 'users:login' %}" method='post'>
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
@@ -20,21 +20,11 @@
                     <input type="password", name='password',placeholder="Pass Word", class="form-control" >
                 </div>
                 
-                <input type="submit", value='Login'>
-                <p><a href="{% url 'resetpwd'%}">Forgot your password</a></p>
+                <input type="submit", value='Login' class="btn btn-primary">
+                <p><a href="{% url 'users:resetpwd'%}">Forgot your password</a></p>
             </form>
-            
-            <div id='another_login'>
-               <button class="loginBtn loginBtn--facebook">
-                    Login with Facebook
-                </button>
 
-                <button class="loginBtn loginBtn--google">
-                Login with Google
-                </button>
-            </div>
-
-            <p>not have account<a href="{% url 'register' %}">Register</a></p>
+            <p>not have account<a href="{% url 'users:register' %}">Register</a></p>
         </div>
 
 
