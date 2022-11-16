@@ -65,7 +65,7 @@ def register(request):
         userName = request.POST("username")
         password = request.POST("password")
 
-        user =  Account(username=userName, password=password)
+        user = Account(username=userName, password=password)
         user.save()
         return render(request, "users/login.html")
     else:
