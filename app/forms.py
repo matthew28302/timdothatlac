@@ -1,5 +1,8 @@
 from django import forms
 from .models import Item
+from django.forms import ModelForm
+from .models import Item
+
 
 class CreateNewPost(forms.ModelForm):
     # title = models.CharField("Tiêu đề", max_length = 200)
@@ -12,16 +15,20 @@ class CreateNewPost(forms.ModelForm):
     # address = models.CharField("Địa chỉ",blank = True, max_length = 200)
     # phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
     # email = models.EmailField(("Email"),blank = True, max_length=254)
+
     class Meta:
         model = Item
-        fields = ('title', 'postInfo', 'typeItem', 'adrLost', 'image', 'content')
+        fields = ('title', 'adrLost', 'image', 'content',
+                  'fullname', 'address', 'phoneNum', 'email')
+
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', }),
-            'postInfo': forms.TextInput(attrs={'class': 'form-control', }),
-            'typeItem': forms.TextInput(attrs={'class': 'form-control', }),
             'adrLost': forms.TextInput(attrs={'class': 'form-control', }),
-            # 'image': forms.ImageField(attrs={'class': 'mx-auto d-block'}),
             'content': forms.Textarea(attrs={'class': 'form-control', }),
+            'fullname': forms.TextInput(attrs={'class': 'form-control', }),
+            'address': forms.TextInput(attrs={'class': 'form-control', }),
+            'phoneNum': forms.TextInput(attrs={'class': 'form-control', }),
+            'email': forms.TextInput(attrs={'class': 'form-control', }),
 
         }
 

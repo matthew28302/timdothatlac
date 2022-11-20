@@ -1,12 +1,10 @@
 
 from django.contrib import admin
-from .models import *
+from .models import Item
 # Register your models here.
 
-admin.site.register(Account)
-admin.site.register(Item)
-admin.site.register(Message)
-admin.site.register(menuItem)
-admin.site.register(Profile)
 
-#...
+admin.site.register(Item)
+
+
+

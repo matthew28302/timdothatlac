@@ -24,7 +24,6 @@
                 <span><i class="fa-brands fa-twitter"></i></span>
                 <span><i class="fa-brands fa-linkedin-in"></i></span>
              </div>
-       <h1>Register form</h1>
        <form action="{% url 'users:register'%}" method="POST">
 
            {% csrf_token %}
@@ -32,6 +31,7 @@
 
            <input type="submit" value="Đăng ký" class="btn btn-primary">
        </form>
+            <p> Already have an account?<a href="{% url 'users:login'%}"> login</a></p>
             </div>
         <div class="image">
          <img src="{% static 'users/background_login.png'%}" alt="">
