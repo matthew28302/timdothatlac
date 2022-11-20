@@ -1,33 +1,45 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <title></title>
-        <link rel="stylesheet" href="{% static 'users/styles.css'%}">
-    </head>
-    <body>
-        <form  method="POST">
-            
-            <div class='container'>
-                {% csrf_token %}
-                {{form.username.label}}
-                {{form.username}}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title> Document</title>-->
+<!--</head>-->
+<!--   <body>-->
+{% extends 'users/layout.html' %}
+{% load static %}
+{% block title %}
+    Register
+{% endblock %}
 
-                {{form.email.label}}
-                {{form.email}}
+{% block wrapper %}
+   
+ <div class="wrapper" >
+        <div class="left-content">
+            <h3>Create Account</h3>
+             <div class="icons_form">
+                <span><i class="fa-brands fa-google"></i></span>
+                <span><i class="fa-brands fa-facebook-f fb_icon"></i></span>
+                <span><i class="fa-brands fa-twitter"></i></span>
+                <span><i class="fa-brands fa-linkedin-in"></i></span>
+             </div>
+       <h1>Register form</h1>
+       <form action="{% url 'users:register'%}" method="POST">
 
-                {{form.password1.label}}
-                {{form.password1}}
+           {% csrf_token %}
+           {{form.as_p}}
 
-                {{form.password2.label}}
-                {{form.password2}}
-    <input type='submit' namne ='Create User'>
+           <input type="submit" value="Đăng ký" class="btn btn-primary">
+       </form>
             </div>
+        <div class="image">
+         <img src="{% static 'users/background_login.png'%}" alt="">
+        </div>
 
-            <div class='container signin'>
-                <p>Already have an account? <a href="{% url 'users:login'%}"> Sign in</a></p>
 
-            </div>
-        </form>
-    </body>
-</html>
+    </div>
+
+<!--   </body>-->
+<!--</html>-->
+       {% endblock %}
