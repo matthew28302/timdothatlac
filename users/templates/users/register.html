@@ -1,14 +1,8 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-<!--    <title> Document</title>-->
-<!--</head>-->
-<!--   <body>-->
+
 {% extends 'users/layout.html' %}
+
 {% load static %}
+
 {% block title %}
     Register
 {% endblock %}
@@ -24,7 +18,7 @@
                 <span><i class="fa-brands fa-twitter"></i></span>
                 <span><i class="fa-brands fa-linkedin-in"></i></span>
              </div>
-       <form action="{% url 'users:register'%}" method="POST">
+       <form action="{% url 'users:register' %}" method="POST">
 
            {% csrf_token %}
            {{form.as_p}}

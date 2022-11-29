@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate , login, logout
 from django.urls import reverse
 from .forms import RegistrationForm
-
+from django.contrib.auth.decorators import login_required
 
 from app.models import Account
 

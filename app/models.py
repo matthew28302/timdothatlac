@@ -1,11 +1,10 @@
-
 from pyexpat import model
-
-
 from django.db import models
-from django.db.models import Count
-# Create your models here.
 from django.utils import timezone
+from django.contrib.auth.models import User
+from datetime import date
+
+
 
 
 class Account(models.Model):
@@ -28,16 +27,19 @@ class Item(models.Model):
         ('TRANSPORT','Xe máy/Ô tô'),
         ('OTHER','Đồ vật khác'),
     )
-    title = models.CharField("Tiêu đề", max_length = 200)
-    postInfo = models.CharField("Kiểu tin tức",max_length=10, choices=_postInfo, blank=True)
-    typeItem = models.CharField("Phân loại đồ", max_length=50, choices=_typeItem,blank=True)
-    adrLost = models.CharField("Địa điểm mất",max_length=200)
-    image = models.ImageField( upload_to='static/app/images/', height_field=None, width_field=None, max_length=None) 
-    content = models.CharField("Nội dung", max_length=500)
-    fullname = models.CharField("Họ tên",blank = True, max_length = 100)
-    address = models.CharField("Địa chỉ",blank = True, max_length = 200)
-    phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
-    email = models.EmailField(("Email"),blank = True, max_length=254)
+    title = models.CharField("Tiêu đề", max_length = 200, blank=True)
+    content = models.CharField("Nội dung", max_length=200, blank=True, null=True )
+    location = models.CharField("Địa điểm thất lạc đồ", max_length=200, blank=True, null=True)
+    postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True, null=True, )
+    typeItem = models.CharField("Loại đồ vật", max_length=10, choices=_typeItem,blank=True, null=True)
+    image = models.ImageField("Ảnh đồ vật ( nếu có)", blank=True, null=True )
+    #Thông tin liên hệ của người nhặt được đồ
+    email = models.EmailField("Email liên hệ", max_length=200,blank=True, null=True)
+    phone = models.IntegerField("Số điện thoại liên hệ",  blank=True, null=True)
+    date_time = models.DateTimeField("Thời gian đăng tin",blank=True, null=True)
+
+    
+  
 
     
 class Message(models.Model):

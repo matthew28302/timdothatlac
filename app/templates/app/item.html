@@ -1,56 +1,44 @@
-{% extends 'app/frame.html'%}
+{% extends 'users/layout.html' %}
 {% load static %}
+{% block title %}
+    Timdothatlac.vn
+{% endblock %}
 
- {% comment %} <!-- title = models.CharField("Tiêu đề", max_length = 200)
-    postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True)
-    typeItem = models.CharField("Phân loại đồ", max_length = 50)
-    adrLost = models.CharField("Địa điểm mất",max_length=200)
-    image = models.ImageField( upload_to='images/', height_field=None, width_field=None, max_length=None) 
-    content = models.CharField("Nội dung", max_length=500)
-    fullname = models.CharField("Họ tên",blank = True, max_length = 100)
-    address = models.CharField("Địa chỉ",blank = True, max_length = 200)
-    phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
-    email = models.EmailField(("Email"),blank = True, max_length=254)
-     --> {% endcomment %}
-{% block content %}
-    <h1>Item: {{ item.id }}</h1>
+{% block wrapper %}
+
+<div id="detail">
     <ul>
-       <li>Title {{ item.title }}</li>
+       {% comment %} <li>Title {{ item.title }}</li>
        <li>Type of items: {{item.typeItem}}</li>
        <li>Kind of news : {{ item.postInfo }}</li>
-       <li>Address: {{ item.address }}</li>
+       <li>Address: {{ item.location }}</li>
        <li>Content: {{ item.postInfo }}</li>
        <li>name  post: {{ item.fullname }}</li>
        <li>phone number: {{ item.phoneNum }}</li>
-       <li>Email: {{ item.postInfo }}</li>
-      
-      
- 
-        <img src="{% static '{{item.image}}' %}" alt="imagehere">
-  
-    </ul> 
-    {% comment %} <style>
-      table, th, td {
-      border:1px solid black;
-      color: green;
-   }
-    </style>
-    <table>
-  <tr>
-    <th>Tiêu đề</th>
-    <th>loại đồ </th>
-    <th>Person 3</th>
-  </tr>
-  <tr>
-    <td>Emil</td>
-    <td>Tobias</td>
-    <td>Linus</td>
-  </tr>
-  <tr>
-    <td>16</td>
-    <td>14</td>
-    <td>10</td>
-  </tr>
-</table> {% endcomment %}
-    <a href="{% url 'apps:indexApp' %}"> All items</a>
-{% endblock%}
+       <li>Email: {{ item.postInfo }}</li> {% endcomment %}
+
+          {%if item.title%}
+            <li> <b>Tiêu đề:</b>  {{ item.title }}</li>
+          {% endif %}
+          {% if item.content %}
+            <li><b>Nội dung:</b>  {{item.content}}</li>
+          {% endif %}
+          
+          {%if item.location  %}
+            <li><b>Địa điểm thất lạc:</b>  {{ item.location }}</li>
+          {% endif %}
+        
+          {%if item.email %}
+            <li><b>email liên hệ: </b>  {{ item.email }}</li>
+          {%endif%}
+          {%if item.phone%}
+            <li><b>Số điện thoại liên hệ:</b> {{ item.phone }}</li>
+          {%endif%}
+
+
+    </ul>
+  </div> 
+
+
+
+{% endblock %}

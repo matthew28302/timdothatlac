@@ -1,15 +1,15 @@
 {% extends 'users/layout.html' %}
 
 {% block wrapper %}
+    <div id="detail" >
             <h1>User {{ request.user.first_name }}</h1>
             <ul>
                 <li >Username: {{ request.user.username }}</li>
                 <li>Email: {{ request.user.email}}</li>
-                {% comment %} <li>Address: {{request.user.address}} </li> {% endcomment %}
 
             </ul>
 
             <a href="{% url 'users:logout' %}"> Log Out</a>
-
+        </div>
 
 {% endblock %}

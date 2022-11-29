@@ -7,19 +7,18 @@ app_name = "apps"
 urlpatterns = [
     path('',views.index,name='indexApp'),
     path('add/', views.add_post, name='postnew'),
-    path('save/', views.save_new_post, name='save_new_post'),
+    path('sucess/', views.save_form_sucess, name='save_form_sucess'),
+    path('fail/', views.save_form_fail, name='save_form_fail'),
     path("<int:item_id>", views.item, name="item"),
-    path("register", views.registerPage, name="register"),
-    path('update/<int:id>', views.update, name='update'),
-    path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
     path('policy/',views.policy,name="policy"),
     path('warning/', views.warning, name="warning"),
     path('donate/', views.donate, name="donate"),
+    path('donate-complete/', views.donate_complete, name='donate-completed'),
     path('terms/', views.terms, name="terms"),
     path('introduce/', views.introduce, name="introduce"),
     path('report/',views.report,name="reportError"),
     path("search/",views.search, name="searchAdvance"),
-
+    path("display_new/", views.displaynew, name="displaynew"),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

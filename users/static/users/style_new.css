@@ -1,0 +1,26 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#container > div {
+  background-color: rgb(157, 211, 48);
+  font-size: 20px;
+  margin: 20px;
+  padding: 20px;
+  width: 200px;
+  border-radius: 6%;
+ 
+}
+
+
+
+#detail {
+  display: flex;
+  width: 750px;
+  background-color: #fff;
+  padding: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  color: black;
+}

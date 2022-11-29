@@ -4,14 +4,17 @@
 Form post new
 {% endblock %}
 
+
+
 {% block wrapper %}
 <div class="container wrapper" >
 
-    <form action="{% url 'apps:save_new_post' %}" method="POST">
+    <form action="." method="post">
 
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" class="btn btn-primary">
+        {{ form.as_p}}
+    </br>
+        <input type="submit" value="Submit" class="btn btn-primary" id="submit">
     </form>
 
 </div>

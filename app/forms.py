@@ -2,33 +2,43 @@ from django import forms
 from .models import Item
 from django.forms import ModelForm
 from .models import Item
+import re
+import datetime
 
 
-class CreateNewPost(forms.ModelForm):
-    # title = models.CharField("Tiêu đề", max_length = 200)
-    # postInfo = models.CharField("Kiểu tin tức",max_length=10, choices=_postInfo, blank=True)
-    # typeItem = models.CharField("Phân loại đồ", max_length=50, choices=_typeItem,blank=True)
-    # adrLost = models.CharField("Địa điểm mất",max_length=200)
-    # image = models.ImageField( upload_to='static/app/images/', height_field=None, width_field=None, max_length=None)
-    # content = models.CharField("Nội dung", max_length=500)
-    # fullname = models.CharField("Họ tên",blank = True, max_length = 100)
-    # address = models.CharField("Địa chỉ",blank = True, max_length = 200)
-    # phoneNum = models.CharField("Số điện thoại",blank =  True, max_length = 10)
-    # email = models.EmailField(("Email"),blank = True, max_length=254)
+
+class CreateNewPost(ModelForm):
+    postInfo = (
+        ('ND','Nhặt được'),
+        ('TK','Tìm kiếm'),
+    )
+    typeItem = (
+        ('ID','Ví/Giấy tờ'),
+        ('PET','Thú cưng'),
+        ('PEOPLE','Người'),
+        ('ED','Điện thoại/Tablet/Laptop'),
+        ('KEY','Chìa khóa'),
+        ('TRANSPORT','Xe máy/Ô tô'),
+        ('OTHER','Đồ vật khác'),
+    )
+   
+    postInfo = forms.ChoiceField(help_text='Kiểu tin tức',choices=postInfo,)
+    typeItem = forms.ChoiceField(help_text="Loại đồ vật",choices=typeItem,)
+    date_time = forms.DateTimeField(initial=datetime.datetime.now())
 
     class Meta:
         model = Item
-        fields = ('title', 'adrLost', 'image', 'content',
-                  'fullname', 'address', 'phoneNum', 'email')
+        fields = ('title','content','location','postInfo','typeItem','image','email','phone','date_time',)
+        
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', }),
-            'adrLost': forms.TextInput(attrs={'class': 'form-control', }),
-            'content': forms.Textarea(attrs={'class': 'form-control', }),
-            'fullname': forms.TextInput(attrs={'class': 'form-control', }),
-            'address': forms.TextInput(attrs={'class': 'form-control', }),
-            'phoneNum': forms.TextInput(attrs={'class': 'form-control', }),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'id':'title_form', }),
+            'content': forms.TextInput(attrs={'class': 'form-control', }),
+            'location': forms.TextInput(attrs={'class': 'form-control', }),
             'email': forms.TextInput(attrs={'class': 'form-control', }),
+            'phone': forms.TextInput(attrs={'class': 'form-control', }),
+            
 
         }
+
 
