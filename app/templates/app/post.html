@@ -7,14 +7,15 @@ Form post new
 
 
 {% block wrapper %}
+
 <div class="container wrapper" >
 
-    <form action="." method="post">
+    <form action="." method="post" >
 
         {% csrf_token %}
         {{ form.as_p}}
     </br>
-        <input type="submit" value="Submit" class="btn btn-primary" id="submit">
+        <input type="submit" value="Submit" class="btn btn-primary" id="submit-post">
     </form>
 
 </div>

@@ -37,6 +37,15 @@ class Item(models.Model):
     email = models.EmailField("Email liên hệ", max_length=200,blank=True, null=True)
     phone = models.IntegerField("Số điện thoại liên hệ",  blank=True, null=True)
     date_time = models.DateTimeField("Thời gian đăng tin",blank=True, null=True)
+    
+class Comment(models.Model):
+    ti = models.ForeignKey(Item, related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return '%s - %s ' % (self.post.title, self.name)
 
     
   

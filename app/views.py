@@ -7,6 +7,37 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import CreateNewPost
 
+import time
+from django.http import JsonResponse
+
+def posts(request):
+    dictionary ={}
+    dictionary["items"]=Item.objects.all()
+    
+    # Get start and end points
+    start = int(request.GET.get("start") or 0)
+    end = int(request.GET.get("end") or (start + 9))
+
+    # Generate list of posts
+    data = []
+    # for i in range(start, end + 1):
+        
+    #     data.append(f"Post #{i}")
+    
+    for item in dictionary["items"]:
+        
+        data.append(item.id)
+
+    # Artificially delay speed of response
+    time.sleep(1)
+
+    # Return list of posts
+    return JsonResponse({
+        "posts": data
+    })
+    
+
+
 @login_required
 def add_post(request):
      # if this is a POST request we need to process the form data
@@ -72,8 +103,44 @@ def report(request):
 def search(request):
     return render(request,"app/searchAdvance.html")
 
+# Hiển thị tất cả thông  tin mới nhất
+def news(request):
+    return render(request, "info/news.html", {
+         "items": Item.objects.all()
+    })
+#hiển thị nhặt được
 def displaynew(request):
     return render(request, "info/news.html", {
-        "items": Item.objects.all()
+        "items": Item.objects.filter(postInfo="ND")
+    })
+#hiển thị tin tìm kiếm   
+def  newsearch(request):
+    return  render(request, "info/news.html", {
+        "items": Item.objects.filter(postInfo="TK")
+    })
+# hiển thi tin liên quan đến thú cưng
+
+def searchpets(request):
+    return render(request, "Info/news.html", {
+        "items": Item.objects.filter(typeItem="PET")
     })
 
+# Hiện thị tin liên quan đến con người
+def searchpeople(request):
+    return render(request, "info/news.html", {
+        "items": Item.objects.filter(typeItem="PEOPLE")
+    })
+
+def search(request):
+    return render(request, "app/searchAdvance.html")
+
+def searchBar(request):
+    if request.method == "POST":
+        search = request.POST['searched']
+        newitems = Item.objects.filter(title__contains=search)
+        return render(request, "Info/searchbar.html",{
+            'search': search,
+            'newitems': newitems,
+        })
+    else:
+        return render(request, "Info/searchbar.html")

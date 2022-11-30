@@ -19,6 +19,12 @@ urlpatterns = [
     path('report/',views.report,name="reportError"),
     path("search/",views.search, name="searchAdvance"),
     path("display_new/", views.displaynew, name="displaynew"),
+    path("new-search/", views.newsearch, name="new-search"),
+    path("new-pets/", views.searchpets, name="search-pets"),
+    path("new-people/", views.searchpeople, name="search-people"),
+    path("news/", views.news, name="news"),
+    path("posts", views.posts, name="posts"),
+    path("searchbar/", views.searchBar, name='search-bar'),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
