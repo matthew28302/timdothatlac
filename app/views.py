@@ -5,10 +5,19 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateNewPost
+from .forms import CreateNewPost, CreateNewPostAdmin, CreateComment
 
 import time
 from django.http import JsonResponse
+from django.contrib import messages
+
+from django import template
+
+
+# import pagination stuff
+from django.core.paginator import Paginator
+
+
 
 def posts(request):
     dictionary ={}
@@ -42,8 +51,11 @@ def posts(request):
 def add_post(request):
      # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = CreateNewPost(request.POST)
+        if request.user.is_superuser:    
+            # create a form instance and populate it with data from the request:
+            form = CreateNewPostAdmin(request.POST)
+        else:
+              form = CreateNewPost(request.POST)
         # # check whether it's valid:
         if form.is_valid():
             form.save()
@@ -56,27 +68,53 @@ def add_post(request):
    
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = CreateNewPost()
+        if request.user.is_superuser:
+            form = CreateNewPostAdmin()
+        else:
+            form = CreateNewPost()
 
     return render(request, 'app/post.html', {'form': form})
 
+# detail  information of the item
+def item(request, item_id):
+    item = Item.objects.get(id=item_id)
+    comments = CreateComment()
+    return render(request, "app/item.html", {
+        "item": item,
+        "comments": comments,
+    })
+
+#Xóa tin tức
+# def delete_news(request, item_id):
+#     item = Item.objects.get(pk=item_id)
+#     if request.user == item.manager:
+#         item.delete()
+#         messages.success(request, "Event deleted!")
+#         return  HttpResponseRedirect(reverse('apps:news'))
+#     else:
+#          messages.success(request, "You're unauthorized ! ")
+#          return  HttpResponseRedirect(reverse('apps:news'))
+    
 
 
 # Create your views here.
 def index(request):
     
+    #set up pagination
+    p = Paginator(Item.objects.all(), 5)
+    page = request.GET.get('page')
+    items = p.get_page(page)
+    nums = "a" * items.paginator.num_pages
     return render(request,'app/index.html',{
-        "items": Item.objects.all()
+        "item_list": Item.objects.all(),
+        'items': items,
+        'nums':nums,
+        
     })
 
 
 
-# detail  information of the item
-def item(request, item_id):
-    item = Item.objects.get(id=item_id)
-    return render(request, "app/item.html", {
-        "item": item
-    })
+
     
 #save form status
 def save_form_sucess(request):

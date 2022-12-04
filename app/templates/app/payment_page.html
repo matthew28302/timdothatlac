@@ -1,3 +1,4 @@
+{%load static %}
 <!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -10,12 +11,20 @@
     </head>
     <style>
         body {
-            background-color: gray;
+            background-color: #fff;
         }
         .text-center {
-            background-color: white;
+            {% comment %} background-color: white;
             width:500px;
             margin-top: 50px;
+            boder {% endcomment %}
+         
+         width: 750px;
+         background-color: #ffff;
+         margin-top:20px;   
+         padding: 20px;
+         border-radius: 5px;
+         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             
 
                
@@ -74,6 +83,30 @@
               });
     </script>
     <body>
+         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="javascript:void(0)">
+          <img src="{% static 'app/5Lost.png' %}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'apps:indexApp' %}">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'apps:searchAdvance'%}">Tìm kiếm </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Blog</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
         <div class='container text-center'>
 
             <h1>Feel free to donate</h1>

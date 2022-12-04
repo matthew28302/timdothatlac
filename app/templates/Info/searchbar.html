@@ -11,7 +11,7 @@
           
           {%for item in newitems %}
         
-            <div> <a href="{% url 'apps:item' item.id %}"> Xem chi tiết</a> {{item.title}} </div>
+            <div style="background-color: LawnGreen;"> <a href="{% url 'apps:item' item.id %}"> Xem chi tiết</a> {{item.title}} </div>
           {%endfor%}
         {%else%}
         <h1>You Forgot to search ....</h1>

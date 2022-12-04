@@ -51,7 +51,8 @@
                             <div class='h-search-form'>
                                 <form action="{% url 'apps:search-bar' %}" method="post">
                                      {%csrf_token %}
-                                    <input type='search' name='searched' placeholder='Type Your Keyboard....'>
+                                    <input type='search' name='searched' placeholder='Type Your Keyboard....' >
+                                    
                                     <button type="submit"><ion-icon  class='bi bi-search' name="search-outline"></ion-icon></button>
                                 </form>
                             </div>

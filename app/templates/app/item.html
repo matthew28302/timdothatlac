@@ -7,8 +7,8 @@
 {% block wrapper %}
 
 <div id="detail">
-    <ul>
-       {% comment %} <li>Title {{ item.title }}</li>
+    <ul class="list-group list-group-flush">
+        {% comment %} <li>Title {{ item.title }}</li>
        <li>Type of items: {{item.typeItem}}</li>
        <li>Kind of news : {{ item.postInfo }}</li>
        <li>Address: {{ item.location }}</li>
@@ -16,24 +16,35 @@
        <li>name  post: {{ item.fullname }}</li>
        <li>phone number: {{ item.phoneNum }}</li>
        <li>Email: {{ item.postInfo }}</li> {% endcomment %}
+     
 
           {%if item.title%}
-            <li> <b>Tiêu đề:</b>  {{ item.title }}</li>
+            <li class="list-group-item"> <b>Tiêu đề:</b>  {{ item.title }}</li>
           {% endif %}
           {% if item.content %}
-            <li><b>Nội dung:</b>  {{item.content}}</li>
+            <li class="list-group-item"><b>Nội dung:</b>  {{item.content}}</li>
           {% endif %}
           
           {%if item.location  %}
-            <li><b>Địa điểm thất lạc:</b>  {{ item.location }}</li>
+            <li class="list-group-item"><b>Địa điểm thất lạc:</b>  {{ item.location }}</li>
           {% endif %}
         
           {%if item.email %}
-            <li><b>email liên hệ: </b>  {{ item.email }}</li>
+            <li class="list-group-item"><b>email liên hệ: </b>  {{ item.email }}</li>
           {%endif%}
           {%if item.phone%}
-            <li><b>Số điện thoại liên hệ:</b> {{ item.phone }}</li>
+            <li class="list-group-item"><b>Số điện thoại liên hệ:</b> {{ item.phone }}</li>
           {%endif%}
+
+          {%if item.date_time%}
+            <li class="list-group-item"><b>Thời gian đăng tin: </b> {{ item.date_time }}</li>
+          {%endif%}
+
+          <li class="list-group-item">
+            <h2>Comment</h2>
+          {% comment %} Comment {% endcomment %}
+          {{comments.as_p}}
+          </li>
 
          
 

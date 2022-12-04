@@ -5,8 +5,14 @@
 {% endblock %}
 
 {% block wrapper %}
-
+                {%if messages %}
+                    {% for message in messages %}
+                        <div class="{{message.tags}}" >{{message }}</div>
+                    {%endfor%}
+                {%endif%}
+        
          <div class="wrapper" >
+          
         <div class="left-content">
             <h3>Login Account</h3>
              <div class="icons_form">
@@ -28,7 +34,7 @@
 
 
                 <input type="submit", value='Login' class="btn_submit">
-                <p class="forget_password"><a href="#">Forgot your password?</a></p>
+                <p class="forget_password"><a href="http://127.0.0.1:8000/accounts/password_reset/">Forgot your password?</a></p>
                 <p id="btn_register"><a href="{% url 'users:register' %}">Register</a></p>
             </form>
 

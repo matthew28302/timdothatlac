@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from datetime import date
+from django.db.models.signals import pre_save
 
 
 
@@ -37,15 +38,21 @@ class Item(models.Model):
     email = models.EmailField("Email liên hệ", max_length=200,blank=True, null=True)
     phone = models.IntegerField("Số điện thoại liên hệ",  blank=True, null=True)
     date_time = models.DateTimeField("Thời gian đăng tin",blank=True, null=True)
-    
-class Comment(models.Model):
-    ti = models.ForeignKey(Item, related_name="comments", on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    body = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)
+    #Thông tin xác thực ai là người đăng tin
+    manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     
     def __str__(self):
-        return '%s - %s ' % (self.post.title, self.name)
+        return self.title
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey('Item', on_delete=models.CASCADE)
+    content = models.TextField()
+    
+    def __str__(self):
+        return self.user.username
 
     
   

@@ -4,13 +4,13 @@ from django.contrib.auth import authenticate , login, logout
 from django.urls import reverse
 from .forms import RegistrationForm
 from django.contrib.auth.decorators import login_required
-
-from app.models import Account
-
+from django.contrib import messages
 
 
 
 
+
+    
 
 
 def registerPage(request):
@@ -36,9 +36,12 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
+            
             login(request, user)
+            
             return HttpResponseRedirect(reverse("users:index"))
         else:
+            messages.error(request, "Your username or password are not correct. Try login again.!")
             render(request, "users/login.html", {
                 "message": "Invalid Credentials"
             })
@@ -47,6 +50,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+    messages.success(request, "you log out sucessful!")
     return render(request, "users/login.html", {
         "message": "Logged Out"
     })

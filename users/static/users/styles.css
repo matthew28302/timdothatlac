@@ -133,3 +133,25 @@
          text-decoration:none
      }
 
+/* message style*/
+ .success {
+    padding: 10px;
+    background: LawnGreen;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: larger;
+    border-radius: 5px;
+    margin-bottom: 2px;
+ 
+  } 
+  .error {
+    padding: 10px;
+    background:LightPink;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: larger;
+    border-radius: 5px;
+    margin-bottom: 2px;
+   
+   
+  }
