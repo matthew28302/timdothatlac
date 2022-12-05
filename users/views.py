@@ -5,10 +5,29 @@ from django.urls import reverse
 from .forms import RegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 
 
+def update(request, pk):
+    mymember= get_object_or_404(User, pk=pk)
+  
+    return render(request, 'users/update.html', {
+        'mymember': mymember
+    })
+    
+def updaterecord(request, pk):
+    
+    email = request.POST['email']
+    first_name = request.POST['first_name']
+    last_name = request.POST['last_name']
 
-
+    member = get_object_or_404(User, pk=pk)
+    member.first_name = first_name
+    member.last_name = last_name
+    member.email = email
+    member.save()
+    return HttpResponseRedirect(reverse('users:index'))
 
     
 

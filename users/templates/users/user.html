@@ -60,9 +60,13 @@
             <img src="{% static 'users/background.jpg'%}" alt="image" style='width:100%'>
             <h1>{{ request.user.username }}</h1>
         <p class="title">Email: {{ request.user.email}}</p>
+        <p class="title">First name: {{ request.user.first_name}}</p>
+        <p class="title">Last name: {{ request.user.last_name}}</p>
         
            <p> <a class='log' href="{% url 'users:logout' %}"> Log Out</a><p>
-       
+            <a href="{% url 'users:update' request.user.id %}"> <button  class="btn btn-secondary" type="button"> Cập nhật thông tin</button> </a>
+
+    
         </div>
     </body>
 </html>
