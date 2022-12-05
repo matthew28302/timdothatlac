@@ -10,6 +10,11 @@
 {% block wrapper %}
    
  <div class="wrapper" >
+                {%if messages %}
+                    {% for message in messages %}
+                        <div class="{{message.tags}}" >{{message }}</div>
+                    {%endfor%}
+                {%endif%}
         <div class="left-content">
             <h3>Create Account</h3>
              <div class="icons_form">

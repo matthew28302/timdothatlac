@@ -19,7 +19,17 @@ from django.core.paginator import Paginator
 
  
 
-
+#delete news 
+@login_required
+def delete(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    if request.user.username == item.manager.username or request.user.is_superuser:
+        item.delete()
+        messages.success(request, "you have deleted item successful!")
+        return HttpResponseRedirect(reverse('apps:indexApp'))
+    else:
+        messages.error(request, "You're not authorize.")
+        render(request, "app/index.html")
 
 def posts(request):
     dictionary ={}
@@ -111,7 +121,7 @@ def item(request, pk):
 def index(request):
     
     #set up pagination
-    p = Paginator(Item.objects.all(), 5)
+    p = Paginator(Item.objects.all().order_by('-date_time'), 5)
     page = request.GET.get('page')
     items = p.get_page(page)
     nums = "a" * items.paginator.num_pages
@@ -154,29 +164,29 @@ def search(request):
 # Hiển thị tất cả thông  tin mới nhất
 def news(request):
     return render(request, "info/news.html", {
-         "items": Item.objects.all()
+         "items": Item.objects.all().order_by('-date_time')
     })
 #hiển thị nhặt được
 def displaynew(request):
     return render(request, "info/news.html", {
-        "items": Item.objects.filter(postInfo="ND")
+        "items": Item.objects.filter(postInfo="ND").order_by('-date_time')
     })
 #hiển thị tin tìm kiếm   
 def  newsearch(request):
     return  render(request, "info/news.html", {
-        "items": Item.objects.filter(postInfo="TK")
+        "items": Item.objects.filter(postInfo="TK").order_by('-date_time')
     })
 # hiển thi tin liên quan đến thú cưng
 
 def searchpets(request):
     return render(request, "Info/news.html", {
-        "items": Item.objects.filter(typeItem="PET")
+        "items": Item.objects.filter(typeItem="PET").order_by('-date_time')
     })
 
 # Hiện thị tin liên quan đến con người
 def searchpeople(request):
     return render(request, "info/news.html", {
-        "items": Item.objects.filter(typeItem="PEOPLE")
+        "items": Item.objects.filter(typeItem="PEOPLE").order_by('-date_time')
     })
 
 def search(request):

@@ -10,6 +10,7 @@ urlpatterns = [
     path('sucess/', views.save_form_sucess, name='save_form_sucess'),
     path('fail/', views.save_form_fail, name='save_form_fail'),
     path("<int:pk>", views.item, name="item"),
+    path('<int:pk>', views.delete, name='delete'),# delete new post
     path('policy/',views.policy,name="policy"),
     path('warning/', views.warning, name="warning"),
     path('donate/', views.donate, name="donate"),

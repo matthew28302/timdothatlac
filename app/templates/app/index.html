@@ -15,7 +15,13 @@
 
   
 {% block content %}
+
     <h1>Tin mới nhất  </h1>
+     {%if messages %}
+    {% for message in messages %}
+        <div class="{{message.tags}}" >{{message }}</div>
+    {%endfor%}
+    {%endif%}
     {% comment %} <ul class="list-group list-group-flush">
   <li class="list-group-item">An item</li>
   <li class="list-group-item">A second item</li>

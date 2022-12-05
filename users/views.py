@@ -69,7 +69,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, "you log out sucessful!")
+    messages.success(request, "you log out successful!")
     return render(request, "users/login.html", {
         "message": "Logged Out"
     })
@@ -87,8 +87,10 @@ def register(request):
             form.cleaned_data['email']
             form.cleaned_data['password1']
             form.save()
+            messages.success(request, "You have create an account successful. Try login now.")
             return HttpResponseRedirect(reverse('users:index'))
         else:
+            messages.error(request, "you're information is not valid, try again.")
             return render(request, 'users/register.html', {
                 'form': form
             })
