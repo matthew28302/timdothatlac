@@ -48,8 +48,8 @@ class Item(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    post = models.ForeignKey('Item', on_delete=models.CASCADE)
-    content = models.TextField()
+    post = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='comments')
+    content  = models.TextField()
     
     def __str__(self):
         return self.user.username

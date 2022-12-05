@@ -6,14 +6,24 @@ import datetime
 
 
 #Comment form
-class CreateComment(ModelForm):
+class CommentForm(ModelForm):
+    def __init__(self, *args, **kwargs ):
+        self.user = kwargs.pop('user', None)
+        self.post = kwargs.pop('post', None)
+        super().__init__(*args, **kwargs)
     
+    def save(self, commit=True):
+        comment = super().save(commit=False)
+        comment.user = self.user
+        comment.post = self.post
+        comment.save()
+         
     
     # date = forms.DateTimeField(initial=datetime.datetime.now()
     class Meta:
         
         model = Comment
-        fields = ('user',  'post', 'content')
+        fields = ["content"]
         
         widgets = {
             'content': forms.TextInput(attrs={'class': 'form-control'})

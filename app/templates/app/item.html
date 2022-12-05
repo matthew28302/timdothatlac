@@ -42,8 +42,34 @@
 
           <li class="list-group-item">
             <h2>Comment</h2>
-          {% comment %} Comment {% endcomment %}
-          {{comments.as_p}}
+
+           {% for comment in item.comments.all %}
+           <div class="list-group">
+           
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1" ><strong>{{comment.user}}</strong><h5>
+              <small class="text-muted"><p>{{comment.date}}</p></small>
+              <p>{{comment.content|linebreaks}}</p>
+              </div>
+           
+            </div>
+          {% endfor %}
+
+          {%if user.username %}
+          <form action="{% url 'apps:item' item.pk %}" method='POST'>
+            {%csrf_token%}
+            <p> <label> Bình Luận</p>
+              {{form.content}}
+              <br/>
+              <input class="btn btn-primary" type="submit" value="Bình Luận">
+          {% endif %} 
+
+          {%if not user.username %}
+                <h4>Đăng nhập để bình luận</h4>
+              <a href="{%url 'users:login'%}"> <button  class="btn btn-secondary" type="button"> Đăng nhập</button> </a>
+
+          {% endif %}
+          
           </li>
 
          

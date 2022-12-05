@@ -1,11 +1,11 @@
 from urllib.request import HTTPRedirectHandler
-from .models import Item
+from .models import Item, Comment
 from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateNewPost, CreateNewPostAdmin, CreateComment
+from .forms import CreateNewPost, CreateNewPostAdmin, CommentForm
 
 import time
 from django.http import JsonResponse
@@ -16,6 +16,8 @@ from django import template
 
 # import pagination stuff
 from django.core.paginator import Paginator
+
+ 
 
 
 
@@ -76,12 +78,20 @@ def add_post(request):
     return render(request, 'app/post.html', {'form': form})
 
 # detail  information of the item
-def item(request, item_id):
-    item = Item.objects.get(id=item_id)
-    comments = CreateComment()
+def item(request, pk):
+    post = get_object_or_404(Item, pk=pk)
+    form = CommentForm()
+    if request.method=='POST':
+        form = CommentForm(request.POST, user=request.user, post=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(f'./{pk}')
+        
+ 
     return render(request, "app/item.html", {
-        "item": item,
-        "comments": comments,
+        "item": post,
+        "form":form,
+       
     })
 
 #Xóa tin tức
