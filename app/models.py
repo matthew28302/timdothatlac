@@ -33,7 +33,7 @@ class Item(models.Model):
     location = models.CharField("Địa điểm thất lạc đồ", max_length=200, blank=True, null=True)
     postInfo = models.CharField("Kiểu tin tức",max_length = 10,choices=_postInfo,blank=True, null=True, )
     typeItem = models.CharField("Loại đồ vật", max_length=10, choices=_typeItem,blank=True, null=True)
-    image = models.ImageField("Ảnh đồ vật ( nếu có)", blank=True, null=True )
+    image = models.ImageField("Ảnh đồ vật ( nếu có)",upload_to='images', blank=True, null=True , default=None)
     #Thông tin liên hệ của người nhặt được đồ
     email = models.EmailField("Email liên hệ", max_length=200,blank=True, null=True)
     phone = models.IntegerField("Số điện thoại liên hệ",  blank=True, null=True)

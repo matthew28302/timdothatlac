@@ -24,6 +24,11 @@
           {% if item.content %}
             <li class="list-group-item"><b>Nội dung:</b>  {{item.content}}</li>
           {% endif %}
+
+           {% if item.image %}
+            <li class="list-group-item"><b>Hình ảnh </b>  {{item.image}}</li>
+          {% endif %}
+
           
           {%if item.location  %}
             <li class="list-group-item"><b>Địa điểm thất lạc:</b>  {{ item.location }}</li>
@@ -39,6 +44,9 @@
           {%if item.date_time%}
             <li class="list-group-item"><b>Thời gian đăng tin: </b> {{ item.date_time }}</li>
           {%endif%}
+          {% if item.image %}
+            <li class="list-group-item"><img src="/app/media/{{item.image}}" class="img" style="width 80px; height 80px;"></li>
+          {% endif %}
           {% comment %} Delete or update items {% endcomment %}
           
           
