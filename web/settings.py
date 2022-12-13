@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'social_django', 
  
 ]
 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', # authenticate with google
 ]
 
 ROOT_URLCONF = 'web.urls'
@@ -67,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', # add this to authenticate with google
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -133,6 +137,31 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'app/media/')
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
+#social app custom setting
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+     
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'logout'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1166014040940812'
+SOCIAL_AUTH_FACEBOOK_SECRET = '04e3e578ed8ff38b1e5f830bd8245b07'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1047800267285-uoupmub2jvv96bgs88pc8g29nf2mc147.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+#for extra info
+SOCIAL_AUTH_FACEBOOK_SCOPE = [
+    'email',
+]
+
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
 
 

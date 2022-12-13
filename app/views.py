@@ -118,6 +118,7 @@ def item(request, pk):
 
 
 # Create your views here.
+@login_required
 def index(request):
     
     #set up pagination

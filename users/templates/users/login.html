@@ -16,8 +16,8 @@
         <div class="left-content">
             <h3>Login Account</h3>
              <div class="icons_form">
-                <span><i class="fa-brands fa-google"></i></span>
-                <span><i class="fa-brands fa-facebook-f fb_icon"></i></span>
+                 <span> <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa-brands fa-google"></i></a></span>
+                <span> <a href="{% url 'social:begin' 'facebook' %}"><i class="fa-brands fa-facebook-f fb_icon"></i></a></span>
                 <span><i class="fa-brands fa-twitter"></i></span>
                 <span><i class="fa-brands fa-linkedin-in"></i></span>
              </div>
