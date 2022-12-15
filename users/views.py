@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 
-
 def update(request, pk):
     mymember= get_object_or_404(User, pk=pk)
   
@@ -42,6 +41,7 @@ def registerPage(request):
             
     # context = {'form': form}
     # return render(request, 'users/register1.html', context)
+@login_required
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('users:login'))
