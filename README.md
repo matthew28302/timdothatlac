@@ -18,7 +18,16 @@ Project is created with
 * Python, HTML, CSS
 
 ## Setup
-To run this project we need to thing.
+To run this project we need to steps.
 
-Setp1: create virtual environment
+* Setp1: create virtual environment
 https://www.javatpoint.com/django-virtual-environment-setup
+
+* Step2:
+```
+$ env\Scripts\activate
+$ c ./timdothatlac
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py runserver localhost:8000
+```
