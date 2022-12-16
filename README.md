@@ -13,10 +13,12 @@ This project is a website Tim do that lac ( find loss thing)
 
 ## Technologies
 Project is created with
-* Django 
+* Django 4.1.2
 * Javascript
+* Python, HTML, CSS
 
 ## Setup
 To run this project we need to thing.
 
-Setp1
+Setp1: create virtual environment
+https://www.javatpoint.com/django-virtual-environment-setup
