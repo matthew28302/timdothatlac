@@ -1,7 +1,5 @@
 # timdothatlac
-
-Download project:
-git clone
+This is a project create a website with django framework.
 ## Table of contents
 
 * [General info](#General-info)
