@@ -22,6 +22,7 @@ To run this project we need to steps.
 https://www.javatpoint.com/django-virtual-environment-setup
 
 * Step2: Download and setup
+
 ```
 $ git clone https://github.com/matthew28302/timdothatlac.git 
 $ env\Scripts\activate

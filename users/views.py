@@ -58,7 +58,7 @@ def login_view(request):
             
             login(request, user)
             
-            return HttpResponseRedirect(reverse("users:index"))
+            return HttpResponseRedirect(reverse("apps:indexApp"))
         else:
             messages.error(request, "Your username or password are not correct. Try login again.!")
             render(request, "users/login.html", {
